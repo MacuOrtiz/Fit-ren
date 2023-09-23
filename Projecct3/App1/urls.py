@@ -3,8 +3,8 @@ from App1.views import *
 
 urlpatterns = [
     
-    path('inicio/', inicio),
-    path('prendas/', prendas),
-    path('zapatos/', zapatos),
-    path('accesorios/', accesorios),
+    path('inicio/', inicio, name="Inicio"),
+    path('prendas/', prendas, name="Prendas"),
+    path('zapatos/', zapatos, name= "Zapatos"),
+    path('accesorios/', accesorios, name="Accesorios"),
 ]
