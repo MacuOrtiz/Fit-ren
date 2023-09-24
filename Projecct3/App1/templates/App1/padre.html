@@ -28,9 +28,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Prendas' %}">Ropa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Zapatos' %}">Zapatos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Accesorios' %}">Accesorios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Prendas' %}">Clothes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Zapatos' %}">Shoes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Accesorios' %}">Accesories</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@
                             {% block titulo %}{% endblock %}
                         </h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Pushing your limits, Together</h2>
-                        <a class="btn btn-primary" href="#about">Get Started your shopping</a>
+                        <a class="btn btn-primary" href="{% url 'RegistroUser' %}">Join us and be family.</a>
                     </div>
                 </div>
             </div>
