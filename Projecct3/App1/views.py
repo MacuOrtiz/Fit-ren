@@ -37,3 +37,17 @@ def userRegistro(request):
         return render(request, "App1/inicio.html")
 
     return render(request, "App1/userRegistro.html")
+
+def buscarUsuario (request):
+    return render(request, "App1/buscarUsuario.html")
+
+def resultado(request):
+    usuario = request.GET.get('usuario')
+    if usuario:
+        # búsqueda en la base de datos
+        resultados = UserRegistro.objects.filter(userName__icontains=usuario)
+        # lógica con los resultados si es necesario
+        return render(request, 'App1/resultado.html', {'resultados': resultados})
+    else:
+        # el caso donde no se proporciona un parámetro de búsqueda
+        return render(request, 'App1/error.html', {'mensaje': 'Por favor, proporciona un nombre de usuario válido.'})

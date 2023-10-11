@@ -6,6 +6,10 @@ urlpatterns = [
     path('prendas/', prendas, name="Prendas"),
     path('zapatos/', zapatos, name="Zapatos"),
     path('accesorios/', accesorios, name="Accesorios"),
-    path('userRegistro/', userRegistro, name="RegistroUser"),  
+    path('userRegistro/', userRegistro, name="RegistroUser"), 
+    path("buscarUsuario/", buscarUsuario, name="BusquedaUsuario"), 
+    path("resultados/", resultado, name='Resultado'), 
+    
 ]
+
 
