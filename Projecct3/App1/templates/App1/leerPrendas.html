@@ -12,6 +12,15 @@
     <p>Costo: {{preda.costo}}</p>
     <p>Genero: {{preda.genero}}</p>
 
+    <button>
+        <a href="{% url 'PrendaEditar' preda.tipo %}">Editar</a>
+    </button>
+
+    <button>
+        <a href="{% url 'PrendaEliminar' preda.tipo %}">Eliminar Prenda</a>
+    </button>
+    
+
     {% endfor%}
 </body>
 </html>

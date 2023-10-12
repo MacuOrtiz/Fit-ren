@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import UserRegistro, Prenda # Asegúrate de importar el modelo correcto
+from App1.forms import PrendaFormulario
+from .models import UserRegistro, Prenda 
+from django.shortcuts import get_object_or_404
+
+
 
 def inicio(request):
     return render(request, "App1/inicio.html")
@@ -53,3 +57,48 @@ def leerPrendas(request):
     prendas = Prenda.objects.all()
     contexto = {"ropa": prendas}
     return render(request, "App1/leerPrendas.html", contexto)
+
+def crearPrendas(request):
+    if request.method == "POST":
+        miFormulario = PrendaFormulario(request.POST)
+        if miFormulario.is_valid():
+            info = miFormulario.cleaned_data
+            nueva_prenda = Prenda(tipo=info["tipo"], costo=info["costo"], genero=info["genero"])
+            nueva_prenda.save()
+            return render(request, "App1/inicio.html") 
+    else:
+        miFormulario = PrendaFormulario()
+
+    return render(request, "App1/prendaFormulario.html", {"miFormulario": miFormulario})  
+
+
+def eliminarPrendas(request, predaTipo):
+    prendas = Prenda.objects.filter(tipo=predaTipo)
+    if prendas.exists():
+        prenda = prendas.first()
+        prenda.delete()
+    predas = Prenda.objects.all()
+    contexto = {"ropa": predas}
+    return render(request, "App1/leerPrendas.html", contexto)
+
+
+def editarPrendas(request, predaTipo):
+    prenda = Prenda.objects.get(tipo=predaTipo)
+    if request.method == "POST":
+     miFormulario = PrendaFormulario(request.POST)
+
+     if miFormulario.is_valid():
+            info = miFormulario.cleaned_data
+
+            prenda.tipo=info["tipo"]
+            prenda.costo=info["costo"]
+            prenda.genero=info["genero"]
+            prenda.save()
+
+            return render(request, "App1/inicio.html") 
+    else:
+        miFormulario = PrendaFormulario(initial={"tipo": prenda.tipo, "costo":prenda.costo, "genero":prenda.genero})
+
+    return render(request, "App1/editarPrendas.html", {"miFormulario": miFormulario, "nombre":predaTipo}) 
+
+          

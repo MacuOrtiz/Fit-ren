@@ -1,14 +1,14 @@
-
 from django.db import models
-
 
 class Prenda(models.Model):
     tipo = models.CharField(max_length=20)
-    costo = models.IntegerField()
+    costo = models.DecimalField(max_digits=10, decimal_places=2, default=50.25)
     genero = models.CharField(max_length=10)
+    imagen_url = models.URLField(blank=True, null=True)  # Campo para la URL de la imagen
 
     def __str__(self):
         return f"Tipo: {self.tipo} -- Costo: {self.costo} -- Genero: {self.genero}"
+
 
 
 class Zapato(models.Model):
@@ -19,6 +19,7 @@ class Zapato(models.Model):
     estilo = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
+    imagen_url = models.URLField(blank=True, null=True)
 
 class Accesorio(models.Model):
     
@@ -28,6 +29,7 @@ class Accesorio(models.Model):
     categoria = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
+    imagen_url = models.URLField(blank=True, null=True)
 
 class UserRegistro(models.Model):
     

@@ -12,6 +12,9 @@ urlpatterns = [
     
     #crud prendas
     path("leerPrendas/", leerPrendas, name='RopaLeer'), 
+    path("creearPrenda/", crearPrendas, name='RopaCrear'), 
+    path("eliminarPrendas/<predaTipo>", eliminarPrendas, name='PrendaEliminar'),
+    path("editarPrendas/<predaTipo>", editarPrendas, name='PrendaEditar'),
 ]
 
 
