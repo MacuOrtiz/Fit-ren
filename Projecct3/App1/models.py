@@ -1,22 +1,39 @@
 
 from django.db import models
 
+
 class Prenda(models.Model):
     tipo = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
 
+    def __str__(self):
+        return f"Tipo: {self.tipo} -- Costo: {self.costo} -- Genero: {self.genero}"
+
+
 class Zapato(models.Model):
+
+    def __str__(self):
+        return f"Estilo: {self.estilo } -- Costo:{self.costo} -- Genero:{self.genero}"
+    
     estilo = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
 
 class Accesorio(models.Model):
+    
+    def __str__(self):
+        return f"Categoria: {self.categoria } -- Costo:{self.costo} -- Genero:{self.genero}"
+    
     categoria = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
 
 class UserRegistro(models.Model):
+    
+    def __str__(self):
+        return f"FirstName: {self.firstName} -- LastName:{self.lastName} -- UserName:{self.userName} -- City:{self.city} -- Zip:{self.zip}"
+
     firstName = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     userName=models.CharField(max_length=8)
@@ -24,4 +41,3 @@ class UserRegistro(models.Model):
     zip=models.IntegerField()
 
 
-    

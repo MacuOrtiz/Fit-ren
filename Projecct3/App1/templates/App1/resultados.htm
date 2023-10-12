@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Usuario</title>
+</head>
+<body>
+    <p>El usuario que se está buscando es: {{usuario}}</p>
+
+    {% for usuario in userRegistro %}
+       <p>Nombre: {{usuario.firstName}} ---- Last Name: {{usuario.lastName}}</p>
+    {% endfor %}
+</body>
+</html>

@@ -8,8 +8,10 @@ urlpatterns = [
     path('accesorios/', accesorios, name="Accesorios"),
     path('userRegistro/', userRegistro, name="RegistroUser"), 
     path("buscarUsuario/", buscarUsuario, name="BusquedaUsuario"), 
-    path("resultados/", resultado, name='Resultado'), 
+    path("resultados/", resultados, name='Resultados'), 
     
+    #crud prendas
+    path("leerPrendas/", leerPrendas, name='RopaLeer'), 
 ]
 
 

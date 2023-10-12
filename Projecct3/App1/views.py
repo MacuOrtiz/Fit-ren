@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Prenda, Zapato, Accesorio, UserRegistro
-from django.http import HttpResponseRedirect
-
+from .models import UserRegistro, Prenda # Asegúrate de importar el modelo correcto
 
 def inicio(request):
     return render(request, "App1/inicio.html")
@@ -38,16 +36,20 @@ def userRegistro(request):
 
     return render(request, "App1/userRegistro.html")
 
-def buscarUsuario (request):
+def buscarUsuario(request):
     return render(request, "App1/buscarUsuario.html")
 
-def resultado(request):
-    usuario = request.GET.get('usuario')
-    if usuario:
-        # búsqueda en la base de datos
-        resultados = UserRegistro.objects.filter(userName__icontains=usuario)
-        # lógica con los resultados si es necesario
-        return render(request, 'App1/resultado.html', {'resultados': resultados})
+def resultados(request):
+    usuario = request.GET.get("usuario", "")  # Obtén el valor del parámetro 'usuario' de la URL
+    userRegistro = UserRegistro.objects.filter(userName=usuario)
+    
+    if userRegistro.exists():  # Verifica si el usuario existe en la base de datos
+        return render(request, 'App1/buscarUsuario.html', {'userRegistro': userRegistro, 'usuario': usuario})
     else:
-        # el caso donde no se proporciona un parámetro de búsqueda
-        return render(request, 'App1/error.html', {'mensaje': 'Por favor, proporciona un nombre de usuario válido.'})
+        respuesta = "No existe el usuario"
+        return HttpResponse(respuesta)
+
+def leerPrendas(request):
+    prendas = Prenda.objects.all()
+    contexto = {"ropa": prendas}
+    return render(request, "App1/leerPrendas.html", contexto)
