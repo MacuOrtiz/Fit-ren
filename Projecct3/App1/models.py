@@ -10,16 +10,15 @@ class Prenda(models.Model):
         return f"Tipo: {self.tipo} -- Costo: {self.costo} -- Genero: {self.genero}"
 
 
-
 class Zapato(models.Model):
-
-    def __str__(self):
-        return f"Estilo: {self.estilo } -- Costo:{self.costo} -- Genero:{self.genero}"
-    
     estilo = models.CharField(max_length=20)
     costo = models.IntegerField()
     genero = models.CharField(max_length=10)
     imagen_url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Estilo: {self.estilo} -- Costo: {self.costo} -- Genero: {self.genero}"
+
 
 class Accesorio(models.Model):
     

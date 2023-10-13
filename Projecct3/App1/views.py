@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from App1.forms import PrendaFormulario
-from .models import UserRegistro, Prenda 
+from .models import UserRegistro, Prenda, Zapato
 from django.shortcuts import get_object_or_404
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+
 
 
 
@@ -101,4 +105,24 @@ def editarPrendas(request, predaTipo):
 
     return render(request, "App1/editarPrendas.html", {"miFormulario": miFormulario, "nombre":predaTipo}) 
 
-          
+
+class ListaZapato(ListView):
+    model=Zapato
+
+class DetalleZapato(DetailView):
+    model=Zapato
+
+class CrearZapato(CreateView):
+    model=Zapato
+    success_url = "App1/zapatos/list"
+    fields = ["estilo", "costo", "genero", "imagen_url"]
+
+class ActualizarZapato (UpdateView):
+    model=Zapato
+    success_url = "App1/zapatos/list"
+    fields = ["estilo", "costo", "genero", "imagen_url"]  
+
+class BorrarZapato(DeleteView):
+    success_url = "App1/zapatos/list"
+    fields = ["estilo", "costo", "genero", "imagen_url"]
+        
