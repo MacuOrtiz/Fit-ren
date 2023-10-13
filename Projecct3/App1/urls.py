@@ -18,7 +18,10 @@ urlpatterns = [
 
      #crud zapatos
     path("zapatos/lista/", ListaZapato.as_view(), name='ZapatosLeer'),
-    path("zapatos/detalle/<int:pk>/", DetalleZapato.as_view(), name='ZapatosDetalle'), 
+    path("zapatos/detalle/<int:pk>/", DetalleZapato.as_view(), name='ZapatosDetalle'),
+    path("zapatos/crear/", CrearZapato.as_view(), name='ZapatosCrear'),  
+    path("zapatos/editar/<int:pk>/", ActualizarZapato.as_view(), name='ZapatosEditar'),
+    path("zapatos/borrar/<int:pk>/", BorrarZapato.as_view(), name='ZapatosBorrar'),
 ]
 
 

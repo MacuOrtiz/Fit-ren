@@ -114,15 +114,16 @@ class DetalleZapato(DetailView):
 
 class CrearZapato(CreateView):
     model=Zapato
-    success_url = "App1/zapatos/list"
+    success_url = "/App/zapatos/list"
     fields = ["estilo", "costo", "genero", "imagen_url"]
 
 class ActualizarZapato (UpdateView):
     model=Zapato
-    success_url = "App1/zapatos/list"
+    success_url = "/App/zapatos/list"
     fields = ["estilo", "costo", "genero", "imagen_url"]  
 
 class BorrarZapato(DeleteView):
-    success_url = "App1/zapatos/list"
-    fields = ["estilo", "costo", "genero", "imagen_url"]
+    model=Zapato
+    success_url = "/App/zapatos/lista"
+    
         
