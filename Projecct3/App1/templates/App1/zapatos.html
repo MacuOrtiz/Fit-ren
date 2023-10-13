@@ -1,11 +1,15 @@
 {% extends "App1/padre.html" %}
 
-
-
 {% load static %}
 
 {% block titulo %}
+    Fit 忍 Zapatos
 
-Fit 忍 Zapatos
-
+    {% for zapato in object_list %}
+        <p>Estilo: {{ zapato.estilo }}</p>
+        <p>Costo: {{ zapato.costo }}</p>
+        <p>Genero: {{ zapato.genero }}</p>
+        <p>Imagen_url: {{ zapato.imagen_url }}</p>
+  
+    {% endfor %}
 {% endblock %}
