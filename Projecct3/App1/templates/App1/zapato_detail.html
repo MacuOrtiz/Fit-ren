@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-   
 
+{% extends "App1/zapato_padre.html" %}
+
+
+
+{% load static %}
+
+{% block titulo %}
+   
+<div style="color: white;">
     <p>Estilo: {{zapato.estilo}}</p>
+    <img src="{{ zapato.imagen_url }}" class="card-img-top img-fluid img-thumbnail"
+    alt="{{ zapato.estilo }}" style="width: 180px; height: auto;">
     <p>Costo: {{zapato.costo}}</p>
     <p>Genero: {{zapato.genero}}</p>
-    <p>Imagen_url: {{zapato.imagen_url}}</p>
+    <a href="{% url 'ZapatosLeer'  %}" class="btn btn-primary">Regresar</a>
+  
    
-    <button>
-        <a href="{% url 'ZapatosLeer'  %}">Regresar </a>
-    </button>
+</div>
  
- 
-</body>
-</html>
+    {% endblock %}

@@ -38,8 +38,8 @@ class UserRegistro(models.Model):
 
     firstName = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
-    userName=models.CharField(max_length=8)
-    password=models.CharField(max_length=8)
+    userName=models.CharField(max_length=20)
+    password=models.CharField(max_length=20)
     city=models.CharField(max_length=20)
     zip=models.IntegerField()
 

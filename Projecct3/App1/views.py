@@ -132,7 +132,7 @@ class DetalleZapato(DetailView):
 
 class CrearZapato(CreateView):
     model=Zapato
-    success_url = "/App/zapatos/list"
+    success_url = "/App/zapatos/lista"
     fields = ["estilo", "costo", "genero", "imagen_url"]
 
 class ActualizarZapato (UpdateView):
