@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password  
 
 class Prenda(models.Model):
     tipo = models.CharField(max_length=20)
@@ -38,7 +39,12 @@ class UserRegistro(models.Model):
     firstName = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     userName=models.CharField(max_length=8)
+    password=models.CharField(max_length=8)
     city=models.CharField(max_length=20)
     zip=models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)  # cifra la contraseña antes de guardarla
+        super().save(*args, **kwargs)
 
 

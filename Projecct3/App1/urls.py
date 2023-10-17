@@ -9,6 +9,8 @@ urlpatterns = [
     path('userRegistro/', userRegistro, name="RegistroUser"), 
     path("buscarUsuario/", buscarUsuario, name="BusquedaUsuario"), 
     path("resultados/", resultados, name='Resultados'), 
+    path("login/", login_requets, name='Login'), 
+
     
     #crud prendas
     path("zapatos/list", leerPrendas, name='RopaLeer'), 

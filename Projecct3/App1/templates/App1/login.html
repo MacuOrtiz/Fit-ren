@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Fit 忍 Login</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'App1/assets/favicon.ico' %}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'App1/css/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-1 px-lg-2">
+            <a class="navbar-brand" href="{% url 'Inicio' %}">忍</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Prendas' %}">Clothes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'ZapatosLeer' %}">Shoes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Accesorios' %}">Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'RegistroUser' %}">Join us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="mx-auto my-4 text-uppercase" style="margin-top: 250px; margin-bottom: 250px;">
+                        忍 Login
+                    </h1>                                                                         
+                    <div class=" text-center bg-transparent">
+                        <div class="card-body">
+                            <form action="" method="POST">{% csrf_token %}
+                            
+                                {{formulario.as_p }}
+                                                
+                                <button type="submit">Sign in</button>
+                            </form>
+                        </div>  
+                    </div>
+                </div>
+        </div>
+    </header>
+       
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50">
+        <div class="social d-flex justify-content-center">
+            <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div>
+    </footer>
+</body>
+</html>

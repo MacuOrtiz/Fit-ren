@@ -6,9 +6,25 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render
 
-
-
+def login_requets(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get("useName")  # Cambiado de "userName" a "username"
+            contra = form.cleaned_data.get("password")
+            user = authenticate(username=usuario, password=contra)
+            if user:
+                login(request, user)
+                return render(request, "App1/inicio.html", {"mensaje": f"Bienvenido {user}"})
+            else:
+                return render(request, "App1/inicio.html", {"mensaje": "Usuario o contraseña incorrectos"})
+    else:
+        form = AuthenticationForm()
+    return render(request, "App1/login.html", {"formulario": form})
 
 def inicio(request):
     return render(request, "App1/inicio.html")
@@ -27,6 +43,7 @@ def userRegistro(request):
         first_name = request.POST.get("firstName")
         last_name = request.POST.get("lastName")
         user_name = request.POST.get("userName")
+        password = request.POST.get("password")
         city = request.POST.get("city")
         zip_code = request.POST.get("zip")
 
@@ -35,7 +52,8 @@ def userRegistro(request):
             lastName=last_name,
             userName=user_name,
             city=city,
-            zip=zip_code
+            zip=zip_code,
+            password=password
         )
         
         user_registro.save()
